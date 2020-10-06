@@ -4,7 +4,7 @@ Final project for ICS4U finished June 2020
 # Requirements
 Test and compiled on Java JDK 10.0.2
 
-Game resolution is locked to 1200x900
+Game resolution is locked to `1200 x 900`
 
 # Issues
 No volume control - Starting the game may be very loud
