@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class NoteLoader {
-    private MapLoader supercell = new MapLoader("supercell.txt");
+    private MapLoader supercell = new MapLoader("res/text/supercell.txt");
     private HighScores highScores;
     private Handler handler;
     private MusicManager music;
@@ -26,7 +26,7 @@ public class NoteLoader {
         this.handler = handler;
         // Checks if the music is playing
         if (!handler.isGameMusicPlaying()) {
-            music = new MusicManager("supercell.wav", handler); // This shit is causing memory leaks... how to fix? add to handler?
+            music = new MusicManager("res/audio/supercell.wav", handler); // This shit is causing memory leaks... how to fix? add to handler?
         }
             highScores = new HighScores(handler);
     }
@@ -58,12 +58,12 @@ public class NoteLoader {
             handler.setGameMusicPlaying(false);
 
             // Reads and writes the scores if the user made a high score
-            highScores.readScores("scores.txt");
+            highScores.readScores("res/text/scores.txt");
             highScores.checkScore(handler.getGame().getScore());
             if (highScores.isBigger()) {
                 handler.getDisplay().makeNewScore();
                 highScores.writeScores(handler.getDisplay().getName(), handler.getGame().getScore(), handler.getGame().getCombo());
-                highScores.readScores("scores.txt");
+                highScores.readScores("res/text/scores.txt");
             } else {
                 handler.getDisplay().makeSadScore();
             }

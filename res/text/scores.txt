@@ -1,6 +1,6 @@
-Stephen 40600 54
-Brandon 13900 7
-StephenHome 35300 51
-Dad 9700 5
-Mom 10700 5
-DadWin 13700 9
+null 0 0
+null 0 0
+null 0 0
+null 0 0
+null 0 0
+null 0 0
