@@ -6,12 +6,12 @@ public class Assets {
     // Creating and initalizing all of the images
     public static BufferedImage  hitCircle,supercellBg, intro, title, help, score, information;
     public static void init() {
-        hitCircle = ImageLoader.loadImage("hitcircle.png");
-        supercellBg = ImageLoader.loadImage("supercell bg.jpg");
-        intro = ImageLoader.loadImage("intro.jpg");
-        title = ImageLoader.loadImage("title.jpg");
-        help = ImageLoader.loadImage("how.jpg");
-        score = ImageLoader.loadImage("scores.jpg");
-        information = ImageLoader.loadImage("information.png");
+        hitCircle = ImageLoader.loadImage("res/textures/hitcircle.png");
+        supercellBg = ImageLoader.loadImage("res/textures/supercell bg.jpg");
+        intro = ImageLoader.loadImage("res/textures/intro.jpg");
+        title = ImageLoader.loadImage("res/textures/title.jpg");
+        help = ImageLoader.loadImage("res/textures/how.jpg");
+        score = ImageLoader.loadImage("res/textures/scores.jpg");
+        information = ImageLoader.loadImage("res/textures/information.png");
     }
 }

@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class ScoreState extends State{
     private float mouseX, mouseY;
-    private String inputFile = "scores.txt";
-    private String clap = "clap.wav";
+    private String inputFile = "res/text/scores.txt";
+    private String clap = "res/audio/clap.wav";
     private String [][] scores;
     private MusicManager music;
     private HighScores highScores;

@@ -36,7 +36,7 @@ public class HighScores {
     public void writeScores (String name, int userScore, int userCombo) {
 
 
-        readScores("scores.txt");
+        readScores("res/text/scores.txt");
         this.checkScore(userScore);
 
         if (bigger) {
@@ -44,7 +44,7 @@ public class HighScores {
         }
 
         try {
-            out = new PrintWriter(new FileOutputStream("scores.txt", false));
+            out = new PrintWriter(new FileOutputStream("res/text/scores.txt", false));
             for (int i = 0; i < FILELENGTH; i++) {
                 out.println(wholeLine[i]);
             }

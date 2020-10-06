@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class MenuState extends State {
     private MusicManager music;
-    private String openingPath = "startup.wav";
+    private String openingPath = "res/audio/startup.wav";
     private boolean musicPlaying = false, renderIntro = true;
     private long lastTime, timer;
     private float mouseX, mouseY;
