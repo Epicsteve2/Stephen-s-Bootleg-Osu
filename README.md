@@ -1,5 +1,5 @@
 # Stephen's Bootleg osu!
-Final project for ICS4U
+Final project for ICS4U finished June 2020 
 
 # Requirements
 Test and compiled on Java JDK 10.0.2
