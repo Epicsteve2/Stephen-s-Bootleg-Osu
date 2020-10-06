@@ -1,6 +1,9 @@
 # Stephen's Bootleg osu!
 Final project for ICS4U finished June 2020 
 
+![Title Screen](https://raw.githubusercontent.com/Epicsteve2/Stephen-s-Bootleg-Osu/master/res/textures/title.jpg)
+
+
 This project contains a user manual, as well as code examples
 
 # Requirements
