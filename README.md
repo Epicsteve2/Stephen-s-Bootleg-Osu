@@ -7,7 +7,7 @@ Final project for ICS4U finished June 2019
 This project contains a user manual, as well as code examples
 
 # Requirements
-Test and compiled on `Java JDK 10.0.2` with IntelliJ IDEA
+Tested and compiled on `Java JDK 10.0.2` with IntelliJ IDEA
 
 Game resolution is locked to `1200 x 900`
 
