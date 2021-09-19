@@ -1,0 +1,90 @@
+# https://taskfile.dev
+
+version: '3'
+
+env:
+  JAR_FILE: BootlegOsu.jar
+  IMAGE_NAME: bootleg-osu:latest
+
+tasks:
+  docker-build:
+    desc: Builds the docker image
+    sources: 
+      - src/*.java
+      - res/
+      - Dockerfile
+    cmds:
+      - docker build
+          --tag {{.IMAGE_NAME}}
+          .
+  clean:
+    desc: Removes all *.class and *.jar files
+    cmds:
+      - find . 
+          -type f 
+          -name "*.class" 
+          -exec 
+            rm -vf {} \;
+      - rm -vf {{.JAR_FILE}}
+
+  compile:
+    desc: Compile all *.java to *.class
+    sources: 
+      - src/*.java 
+    generates: 
+      - src/*.class  
+    cmds:
+      - javac -verbose -Xlint:unchecked src/*.java
+
+  build-jar:
+    desc: Compile all *.class to {{.JAR_FILE}}
+    dir: src/
+    deps: 
+      - compile
+    sources: 
+      - src/*.class
+    generates:
+      - '{{.JAR_FILE}}'
+    cmds:
+      - jar cvfe {{.JAR_FILE}} Launcher *.class
+      - mv {{.JAR_FILE}} ../{{.JAR_FILE}}
+  
+  run-jar:
+    desc: Execute application using {{.JAR_FILE}}
+    deps: 
+      - build-jar
+    cmds:
+      - java -jar {{.JAR_FILE}} 
+
+  run-class:
+    desc: Execute application using src/Launcher.class
+    deps: 
+      - compile
+    cmds:
+      - java -classpath src/ Launcher
+
+  run-docker:
+    desc: Execute application using docker
+    deps: 
+      - docker-build
+    cmds:
+      - tput setaf 1
+      - echo "This doesn't work :FeelsBadMan:"
+      # - docker run 
+      #     --env="DISPLAY" 
+      #     --net=host 
+      #     --volume="$HOME/.Xauthority:/root/.Xauthority:rw" 
+      #     {{.IMAGE_NAME}}
+    silent: true
+
+  bash-into-docker:
+    desc: Run bash for the docker container
+    deps: 
+      - docker-build
+    cmds:
+      - docker run 
+          --interactive 
+          --tty 
+          --rm 
+          --entrypoint bash 
+          {{.IMAGE_NAME}}
