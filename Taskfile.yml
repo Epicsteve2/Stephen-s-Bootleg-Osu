@@ -4,7 +4,7 @@ version: '3'
 
 env:
   JAR_FILE: BootlegOsu.jar
-  IMAGE_NAME: bootleg-osu:latest
+  IMAGE_NAME: bootleg-osu
 
 tasks:
   docker-build:
@@ -68,13 +68,11 @@ tasks:
     deps: 
       - docker-build
     cmds:
-      - tput setaf 1
-      - echo "This doesn't work :FeelsBadMan:"
-      # - docker run 
-      #     --env="DISPLAY" 
-      #     --net=host 
-      #     --volume="$HOME/.Xauthority:/root/.Xauthority:rw" 
-      #     {{.IMAGE_NAME}}
+      - docker run 
+          --detach
+          --env DISPLAY=$DISPLAY 
+          --volume /tmp/.X11-unix:/tmp/.X11-unix 
+          {{.IMAGE_NAME}}
     silent: true
 
   bash-into-docker:

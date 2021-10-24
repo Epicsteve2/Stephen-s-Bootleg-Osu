@@ -1,19 +1,15 @@
-FROM openjdk:11.0.12-jdk-slim-bullseye as install
-RUN apt update && \
-    apt install curl --yes && \
-    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d && \
-    apt remove curl --yes
+# Not using openjdk:11-jre-bullseye since we to install openjre-11-jdk anyways for GUI libraries
+FROM debian:bullseye-slim
 
-WORKDIR /app
-COPY . /app
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
+        openjdk-11-jre && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN task build-jar
+WORKDIR /Stephens-Bootleg-Osu/
+COPY BootlegOsu.jar .
+COPY res/ res/
+ENV MUTE 1
 
-FROM openjdk:11.0.12-jre-slim-bullseye
-
-WORKDIR /app
-# COPY --from=install /app/res /app/res
-COPY --from=install /app/res/ /app/res/
-COPY --from=install /app/BootlegOsu.jar /app/BootlegOsu.jar 
-
-CMD java -jar BootlegOsu.jar
+CMD ["java", "-jar", "BootlegOsu.jar"]

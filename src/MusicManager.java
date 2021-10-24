@@ -9,9 +9,13 @@ public class MusicManager {
     private Clip clip;
     private AudioInputStream audioInput;
     private Handler handler;
+    private final boolean MUTE;
 
     // Checks if the file exists
     public MusicManager(String location, Handler handler) {
+        this.MUTE = System.getenv("MUTE") != null;
+        if (this.MUTE) {return;}
+
         this.handler = handler;
         File musicPath = new File (location);
         try {
@@ -29,11 +33,13 @@ public class MusicManager {
 
     // Method for playing the music
     void playMusic () {
+        if (this.MUTE) {return;}
         clip.start();
     }
 
     // Method for stopping the music, then setting the time back to 0
     void stopMusic () {
+        if (this.MUTE) {return;}
         clip.setMicrosecondPosition(0);
         clip.stop();
     }
