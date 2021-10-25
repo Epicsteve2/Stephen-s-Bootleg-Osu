@@ -8,7 +8,7 @@ clean:
 		-name "*.class" \
 		-exec \
 			rm --verbose --force {} \;
-	rm -vf $(JAR_FILE)
+	rm --verbose --force $(JAR_FILE)
 
 .PHONY: compile
 compile:
@@ -18,7 +18,7 @@ compile:
 build-jar: | compile
 	cd src && \
 	jar cvfe $(JAR_FILE) Launcher *.class && \
-    mv $(JAR_FILE) ../$(JAR_FILE)
+    mv --verbose $(JAR_FILE) ../$(JAR_FILE)
 
 .PHONY: docker-build
 docker-build:
