@@ -33,7 +33,14 @@ You can add `MUTE=1` to play the game muted
 
 **Sound does not work unfortunately...**
 ```bash
-make run-docker
+# May need to run 
+# Not exactly sure what this does, but it's probably insecure LOL
+xhost +
+
+make docker-run
+
+# If first command was required to run
+xhost -
 ```
 You can force kill the running container by running
 ```bash
